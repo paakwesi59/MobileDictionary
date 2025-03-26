@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -8,57 +8,114 @@
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    
+
+    <!-- Search Bar Layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+
         <EditText
+            android:id="@+id/search_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search word here"
-            android:layout_toLeftOf="@+id/search_btn"
-            android:id="@+id/search_input"
             android:background="@drawable/rounded_corner"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:layout_toLeftOf="@+id/search_btn"/>
+
         <Button
+            android:id="@+id/search_btn"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/search_btn"
             android:text="Search"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"/>
+
         <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="100dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:indeterminateTint="@color/my_primary"
-            android:id="@+id/progress_bar"
             android:visibility="gone"/>
     </RelativeLayout>
 
-    <TextView
+    <!-- Button to open Favorites page -->
+    <Button
+        android:id="@+id/favorites_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="word"
+        android:text="View Favorites"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Label for Recently Searched Words -->
+    <TextView
+        android:id="@+id/recent_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recently Searched Words"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"/>
+
+    <!-- Recent Searches RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_words_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Clear Recent Searches Button -->
+    <Button
+        android:id="@+id/clear_recent_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear Recent Searches"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Search Result Display -->
+    <TextView
+        android:id="@+id/word_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="word"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
-        android:textColor="#1565C0"
-        android:id="@+id/word_textview"/>
+        android:textColor="#1565C0"/>
+
     <TextView
+        android:id="@+id/phonetic_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="/t e s t/"
-        android:id="@+id/phonetic_textview"/>
+        android:text="/t e s t/"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!-- Buttons for Adding/Removing Favorites and Audio Playback -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/meaning_recycler_view"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
+        <Button
+            android:id="@+id/favorite_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add to Favorites"/>
 
+        <Button
+            android:id="@+id/play_audio_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Play Audio"/>
+    </LinearLayout>
 
-
+    <!-- Meanings RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/meaning_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

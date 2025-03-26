@@ -13,6 +13,7 @@ class MeaningAdapter(private var meaningList: List<Meaning>) : RecyclerView.Adap
            binding.partOfSpeechTextview.text = meaning.partOfSpeech
             binding.definitionsTextview.text = meaning.definitions.joinToString("\n\n"){
                 var currentIndex = meaning.definitions.indexOf(it)
+
                 (currentIndex+1).toString()+". "+it.definition.toString()
             }
 
